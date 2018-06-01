@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Challenge - ShipServ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/thvsjsp.css" th:href="@{/css/thvsjsp.css}"/>
+</head>
+<body>
+    <p th:text="'Company, ' + ${db.company.name}" />
+    <p th:text="'Search Impressions, ' + ${db.searchImpressions}" />
+    <p th:text="'Profile Views, ' + ${db.profileViews}" />
+    <p th:text="'Contact Views, ' + ${db.contactViews}" />
+    <p th:text="'---------------------'" />
+    <p th:text="'Total Bookings: ' + ${db.bookingsDB.totalBookings} + '!'" />
+    <p th:text="'-- Total No Quoted: ' + ${db.bookingsDB.totalNoQuotes} + ' - %' + ${db.bookingsDB.noQuoteRate} + ' (Unactioned: '+ ${db.bookingsDB.unactioned} + ' - Declined: ' + ${db.bookingsDB.declined} + ')'" />
+    <p th:text="'-- Total Quoted: ' + ${db.bookingsDB.totalQuotes} + ' - %' + ${db.bookingsDB.quoteRate}" />
+    <p th:text="'---- Pending: ' + ${db.bookingsDB.quoted} + ' - %' + ${db.bookingsDB.quotePending}" />
+    <p th:text="'---- Lost: ' + ${db.bookingsDB.lost} + ' - %' + ${db.bookingsDB.lostRate}" />
+    <p th:text="'---- Won: ' + ${db.bookingsDB.won} + ' - %' + ${db.bookingsDB.winRate}" />
+    <p th:text="'------ Amount: $' + ${db.bookingsDB.amountWon}"/>
+    <a href="itineraries.html"
+       th:href="@{http://localhost:8080/itineraries(company=${db.company.name})}">View Itinerary</a>
+
+</body>
+</html>

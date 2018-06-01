@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Challenge - ShipServ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/thvsjsp.css" th:href="@{/css/thvsjsp.css}"/>
+</head>
+<body>
+
+    <h1>Itinerary</h1>
+
+    <table>
+        <tr>
+            <th>BOOKING REF</th>
+            <th>BUYER</th>
+            <th>AMOUNT</th>
+            <th>REQUEST DELIVERY</th>
+        </tr>
+        <tr th:each="iti : ${itinerary}">
+            <td th:text="${iti.bookingRef}">Onions</td>
+            <td th:text="${iti.buyer}">Onions</td>
+            <td th:text="${iti.amount}">2.41</td>
+            <td th:text="${iti.requestDelivery}">yes</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>BOOKING REF</th>
+            <th>BUYER</th>
+            <th>AMOUNT</th>
+        </tr>
+    </table>
+    <table th:each="iti : ${itinerary}">
+        <tr align="left">
+            <th colspan="3" th:text="${iti.requestDelivery}">Onions</th>
+        </tr>
+        <tr>
+            <td th:text="${iti.bookingRef}">Onions</td>
+            <td th:text="${iti.buyer}">Onions</td>
+            <td th:text="${iti.amount}">2.41</td>
+        </tr>
+    </table>
+
+</body>
+</html>

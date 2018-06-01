@@ -60,9 +60,9 @@
                         <td th:text="${db.bookingsDB.won}"></td>
                     </tr>
                     <tr text-align="center">
-                        <td th:text="${db.bookingsDB.quotePending}"></td>
-                        <td th:text="${db.bookingsDB.lostRate}"></td>
-                        <td th:text="${db.bookingsDB.winRate}"></td>
+                        <td th:text="' %' + ${db.bookingsDB.quotePending}"></td>
+                        <td th:text="' %' + ${db.bookingsDB.lostRate}"></td>
+                        <td th:text="' %' + ${db.bookingsDB.winRate}"></td>
                     </tr>
                 </table>
             </td>

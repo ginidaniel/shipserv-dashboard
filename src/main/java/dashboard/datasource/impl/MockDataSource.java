@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,6 +51,7 @@ public class MockDataSource implements DataSource {
         bookings.add(new Booking("005", c1, "Dof", new BigDecimal(8492.70), LocalDate.now().plus(3, ChronoUnit.DAYS),  BookingStatus.QUOTED));
         bookings.add(new Booking("006", c1, "Shell", new BigDecimal(2817.03), LocalDate.now().plus(3, ChronoUnit.DAYS),  BookingStatus.DECLINED));
         bookings.add(new Booking("007", c1, "Dof", new BigDecimal(20430.98), LocalDate.now().plus(3, ChronoUnit.DAYS),  BookingStatus.DECLINED));
+        bookings.add(new Booking("075", c1, "Maersk", new BigDecimal(1000.00), LocalDate.now().plus(4, ChronoUnit.DAYS), BookingStatus.WON));
 
         bookings.add(new Booking("008", c2, "Norwegian", new BigDecimal(22000.10), LocalDate.now().plus(1, ChronoUnit.DAYS), null));
         bookings.add(new Booking("009", c2, "EagleStar", new BigDecimal(12300.00), LocalDate.now().plus(1, ChronoUnit.DAYS),  BookingStatus.WON));

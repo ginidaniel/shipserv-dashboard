@@ -1,6 +1,8 @@
+import dashboard.enums.BookingStatus;
 import dashboard.model.Booking;
 import dashboard.model.BookingsDashboard;
 import dashboard.model.Dashboard;
+import dashboard.model.Itinerary;
 import dashboard.services.BookingService;
 import dashboard.services.CompanyService;
 import org.junit.Test;
@@ -54,7 +56,7 @@ public class DashboardImplTests {
             List<Booking> bookings = bookingService.getBookingsByCompany(company, null);
             assertNotNull(bookings);
 
-            assertEquals(7,bookings.size());
+            assertEquals(8,bookings.size());
 
         }   catch (Exception e)    {
             assertTrue(false);
@@ -68,11 +70,29 @@ public class DashboardImplTests {
         BookingsDashboard bdb = bookingService.getBookingDB(company);
 
         assertEquals(1,bdb.getLost());
-        assertEquals(2,bdb.getWon());
+        assertEquals(3,bdb.getWon());
         assertEquals(1,bdb.getQuoted());
         assertEquals(1,bdb.getUnactioned());
         assertEquals(2,bdb.getDeclined());
-        assertEquals(new BigDecimal(3567.50).setScale(2),bdb.getAmountWon());
+        assertEquals(new BigDecimal(4567.50).setScale(2),bdb.getAmountWon());
+    }
+
+    @Test
+    public void testItineraryData() {
+        try {
+
+            String company = "ShipServ";
+
+            List<Booking> bookings = bookingService.getBookingsByCompany(company, BookingStatus.WON);
+            List<Itinerary> itineraries = bookingService.createItineraries(bookings);
+
+            assertEquals(2, itineraries.size());
+            assertEquals(2,itineraries.get(0).getQtyBookings());
+            assertEquals(1,itineraries.get(1).getQtyBookings());
+
+        }   catch (Exception e)    {
+            assertTrue(false);
+        }
     }
 
 }

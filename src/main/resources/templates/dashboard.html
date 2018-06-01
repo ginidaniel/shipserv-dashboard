@@ -8,18 +8,69 @@
           href="../../css/thvsjsp.css" th:href="@{/css/thvsjsp.css}"/>
 </head>
 <body>
-    <p th:text="'Company, ' + ${db.company.name}" />
-    <p th:text="'Search Impressions, ' + ${db.searchImpressions}" />
-    <p th:text="'Profile Views, ' + ${db.profileViews}" />
-    <p th:text="'Contact Views, ' + ${db.contactViews}" />
-    <p th:text="'---------------------'" />
-    <p th:text="'Total Bookings: ' + ${db.bookingsDB.totalBookings} + '!'" />
-    <p th:text="'-- Total No Quoted: ' + ${db.bookingsDB.totalNoQuotes} + ' - %' + ${db.bookingsDB.noQuoteRate} + ' (Unactioned: '+ ${db.bookingsDB.unactioned} + ' - Declined: ' + ${db.bookingsDB.declined} + ')'" />
-    <p th:text="'-- Total Quoted: ' + ${db.bookingsDB.totalQuotes} + ' - %' + ${db.bookingsDB.quoteRate}" />
-    <p th:text="'---- Pending: ' + ${db.bookingsDB.quoted} + ' - %' + ${db.bookingsDB.quotePending}" />
-    <p th:text="'---- Lost: ' + ${db.bookingsDB.lost} + ' - %' + ${db.bookingsDB.lostRate}" />
-    <p th:text="'---- Won: ' + ${db.bookingsDB.won} + ' - %' + ${db.bookingsDB.winRate}" />
-    <p th:text="'------ Amount: $' + ${db.bookingsDB.amountWon}"/>
+    <p th:text="'DASHBOARD - ' + ${db.company.name}" />
+
+    <table width="600px">
+        <tr>
+            <th>SEARCH IMPRESSIONS</th>
+            <th>PROFILE VIEWS</th>
+            <th>CONTACT VIEWS</th>
+            <th>TOTAL BOOKINGS</th>
+        </tr>
+        <tr text-align="center">
+            <td th:text="${db.searchImpressions}"></td>
+            <td th:text="${db.profileViews}"></td>
+            <td th:text="${db.contactViews}"></td>
+            <td th:text="${db.bookingsDB.totalBookings}"></td>
+        </tr>
+    </table>
+
+    <table width="600px">
+        <tr>
+            <th>TOTAL NO QUOTED</th>
+            <th>TOTAL QUOTED</th>
+        </tr>
+        <tr text-align="center">
+            <td th:text="${db.bookingsDB.totalNoQuotes} + ' - %' + ${db.bookingsDB.noQuoteRate}">TOTAL NO QUOTED</td>
+            <td th:text="${db.bookingsDB.totalQuotes} + ' - %' + ${db.bookingsDB.quoteRate}">TOTAL QUOTED</td>
+        </tr>
+        <tr text-align="center">
+            <td>
+                <table>
+                    <tr>
+                        <th>UNACTIONED</th>
+                        <th>DECLINED</th>
+                    </tr>
+                    <tr text-align="center">
+                        <td th:text="${db.bookingsDB.unactioned}"></td>
+                        <td th:text="${db.bookingsDB.declined}"></td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <th>PENDING</th>
+                        <th>LOST</th>
+                        <th>WON</th>
+                    </tr>
+                    <tr text-align="center">
+                        <td th:text="${db.bookingsDB.quoted}"></td>
+                        <td th:text="${db.bookingsDB.lost}"></td>
+                        <td th:text="${db.bookingsDB.won}"></td>
+                    </tr>
+                    <tr text-align="center">
+                        <td th:text="${db.bookingsDB.quotePending}"></td>
+                        <td th:text="${db.bookingsDB.lostRate}"></td>
+                        <td th:text="${db.bookingsDB.winRate}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p th:text="'AMOUNT WON: $' + ${db.bookingsDB.amountWon}"/>
+
     <a href="itineraries.html"
        th:href="@{http://localhost:8080/itineraries(company=${db.company.name})}">View Itinerary</a>
 
